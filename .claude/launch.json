@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ondam-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\ORG\\AppData\\Local\\Temp\\claude\\f9d053872d9cb0da\\57c8f62c-97af-4075-ac6f-5435f856aae3\\scratchpad\\serve.js", "C:\\Users\\ORG\\Desktop\\ondam-site(시연)"],
+      "port": 5173
+    }
+  ]
+}

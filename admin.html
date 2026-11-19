@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 검색엔진에 나오지 않게 -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>관리자 — 온담 한방찻집</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Supabase (공개용 라이브러리) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- 위쪽: 손님용 탭 없음, 오른쪽 위에 로그아웃 -->
+  <header class="site-header admin-header">
+    <div class="container">
+      <span class="brand">온담 관리자</span>
+      <button id="logout-btn" class="btn btn-secondary btn-small" type="button" hidden>로그아웃</button>
+    </div>
+  </header>
+
+  <main id="admin-app">
+
+    <!-- 로그인 화면 (처음에는 이것만 보입니다) -->
+    <section id="login-view" class="section">
+      <div class="container">
+        <div class="login-box">
+          <h1>사장님 로그인</h1>
+          <p class="section-lead">예약 목록은 로그인한 뒤에만 볼 수 있습니다.</p>
+
+          <form id="login-form" class="form" novalidate>
+            <div class="field">
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" autocomplete="username" required>
+            </div>
+            <div class="field">
+              <label for="password">비밀번호</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">로그인</button>
+            <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 예약 목록 (로그인한 뒤에만 보이고, 내용도 그때 불러옵니다) -->
+    <section id="list-view" class="section" hidden>
+      <div class="container">
+        <h1>예약 목록</h1>
+        <p class="admin-count">전체 예약 <strong id="total-count">0</strong>건</p>
+        <p class="form-status" id="list-status" role="status" aria-live="polite"></p>
+
+        <div class="table-wrap">
+          <table class="admin-table">
+            <caption class="sr-only">단체 예약 목록 (최신 신청순)</caption>
+            <thead>
+              <tr>
+                <th scope="col">신청 시각</th>
+                <th scope="col">이름</th>
+                <th scope="col">연락처</th>
+                <th scope="col">방문 날짜</th>
+                <th scope="col">인원</th>
+                <th scope="col">남기는 말</th>
+              </tr>
+            </thead>
+            <tbody id="reservation-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
